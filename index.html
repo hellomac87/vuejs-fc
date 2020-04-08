@@ -8,7 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="app">
+    <div id="app" v-bind:class="{'active' : active}">
       {{ msg }}
     </div>
     <div id="app-2">
@@ -21,6 +21,7 @@
         el: "#app",
         data: {
           msg: "Hello Vue!!",
+          active: true,
         },
       });
       new Vue({
