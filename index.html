@@ -6,23 +6,34 @@
     <title>vue</title>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <style>
+      .normal {
+        color: blue;
+      }
+      .active {
+        color: red;
+      }
+    </style>
   </head>
 
   <body>
     <div id="app">
-      <div>{{ msg }}</div>
-      <div v-html="msg"></div>
-      <!-- js expression -->
-      <div>{{ number + 2 }}</div>
-      <div>{{ new Date() }}</div>
+      <div v-bind:class="className" v-on:click="changeClassName">{{ msg }}</div>
+      <div :class="className" @click="changeClassName">{{ msg }}</div>
     </div>
 
     <script>
       const vm = new Vue({
         el: "#app",
         data: {
-          msg: "Hello Vue! <br/> Good job!",
-          number: 2,
+          msg: "Hello Vue!",
+          className: "normal",
+        },
+        methods: {
+          changeClassName() {
+            this.className = "active";
+          },
         },
       });
     </script>
