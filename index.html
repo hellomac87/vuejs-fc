@@ -12,6 +12,9 @@
     <div id="app">
       <div>{{ msg }}</div>
       <div v-html="msg"></div>
+      <!-- js expression -->
+      <div>{{ number + 2 }}</div>
+      <div>{{ new Date() }}</div>
     </div>
 
     <script>
@@ -19,6 +22,7 @@
         el: "#app",
         data: {
           msg: "Hello Vue! <br/> Good job!",
+          number: 2,
         },
       });
     </script>
