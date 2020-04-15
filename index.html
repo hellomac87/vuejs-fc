@@ -6,33 +6,41 @@
     <title>vue</title>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-    <style>
-      .normal {
-        color: blue;
-      }
-      .active {
-        color: red;
-      }
-    </style>
   </head>
 
   <body>
     <div id="app">
-      <div v-bind:class="className" v-on:click="changeClassName">{{ msg }}</div>
-      <div :class="className" @click="changeClassName">{{ msg }}</div>
+      <div class="todos">
+        <div v-for="todo in todos" :key="todo.id">
+          <input type="checkbox" v-model="todo.done" />
+          <span>{{ todo.title }}</span>
+        </div>
+      </div>
     </div>
 
     <script>
       const vm = new Vue({
         el: "#app",
         data: {
-          msg: "Hello Vue!",
-          className: "normal",
+          todos: [
+            { title: "아침먹고" },
+            { title: "점심먹고" },
+            { title: "저녁먹고" },
+          ],
         },
-        methods: {
-          changeClassName() {
-            this.className = "active";
+        computed: {
+          computedTodos() {
+            return this.todos.map((todo, index) => {
+              // return Object.assign({}, todo, {
+              //   id: index + 1,
+              //   done: false
+              // })
+              return {
+                ...todo,
+                id: index + 1,
+                done: false,
+              };
+            });
           },
         },
       });
