@@ -10,37 +10,29 @@
 
   <body>
     <div id="app">
-      <div class="todos">
-        <div v-for="todo in todos" :key="todo.id">
-          <input type="checkbox" v-model="todo.done" />
-          <span>{{ todo.title }}</span>
-        </div>
-      </div>
+      <div>{{ reverseMsg() }}</div>
+      <div>{{ reverseMsg() }}</div>
+      <div>{{ reverseMsg() }}</div>
+      <div>--------------------------------------</div>
+      <div>{{ reversedMsg }}</div>
+      <div>{{ reversedMsg }}</div>
+      <div>{{ reversedMsg }}</div>
     </div>
 
     <script>
       const vm = new Vue({
         el: "#app",
         data: {
-          todos: [
-            { title: "아침먹고" },
-            { title: "점심먹고" },
-            { title: "저녁먹고" },
-          ],
+          msg: "Hello Vue!",
         },
         computed: {
-          computedTodos() {
-            return this.todos.map((todo, index) => {
-              // return Object.assign({}, todo, {
-              //   id: index + 1,
-              //   done: false
-              // })
-              return {
-                ...todo,
-                id: index + 1,
-                done: false,
-              };
-            });
+          reversedMsg() {
+            return this.msg.split("").reverse().join("");
+          },
+        },
+        methods: {
+          reverseMsg() {
+            return this.msg.split("").reverse().join("");
           },
         },
       });
