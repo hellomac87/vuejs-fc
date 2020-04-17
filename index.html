@@ -10,12 +10,6 @@
 
   <body>
     <div id="app">
-      <div>{{ reverseMsg() }}</div>
-      <div>{{ reverseMsg() }}</div>
-      <div>{{ reverseMsg() }}</div>
-      <div>--------------------------------------</div>
-      <div>{{ reversedMsg }}</div>
-      <div>{{ reversedMsg }}</div>
       <div>{{ reversedMsg }}</div>
     </div>
 
@@ -26,13 +20,18 @@
           msg: "Hello Vue!",
         },
         computed: {
-          reversedMsg() {
-            return this.msg.split("").reverse().join("");
-          },
-        },
-        methods: {
-          reverseMsg() {
-            return this.msg.split("").reverse().join("");
+          // reversedMsg () {
+          //   return this.msg.split("").reverse().join("");
+          // },
+          reversedMsg: {
+            // Getter
+            get() {
+              return this.msg.split("").reverse().join("");
+            },
+            // Setter
+            set(value) {
+              this.msg = value;
+            },
           },
         },
       });
