@@ -11,30 +11,28 @@
   <body>
     <style>
       .box {
-        width: 100px;
-        height: 100px;
-      }
-      .box--red {
-        background-color: red;
-      }
-      .box--blue {
-        background-color: blue;
-      }
-      .box--gray {
-        background-color: gray;
+        width: 200px;
+        height: 150px;
+        background: rosybrown;
+        margin-bottom: 10px;
       }
     </style>
     <div id="app">
-      <div v-if="colorState === 'red'" class="box box--red"></div>
-      <div v-else-if="colorState === 'blue'" class="box box--blue"></div>
-      <div v-else class="box box--gray"></div>
+      <button @click="toggle">Toggle</button>
+      <div class="box" v-if="show">v-if: remove element</div>
+      <div class="box" v-show="show">v-show: display control</div>
     </div>
 
     <script>
       const vm = new Vue({
         el: "#app",
         data: {
-          colorState: "asdf",
+          show: true,
+        },
+        methods: {
+          toggle() {
+            this.show = !this.show;
+          },
         },
       });
     </script>
