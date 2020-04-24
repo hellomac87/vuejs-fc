@@ -9,29 +9,35 @@
   </head>
 
   <body>
-    <style>
-      .box {
-        width: 200px;
-        height: 150px;
-        background: rosybrown;
-        margin-bottom: 10px;
-      }
-    </style>
     <div id="app">
-      <button @click="toggle">Toggle</button>
-      <div class="box" v-if="show">v-if: remove element</div>
-      <div class="box" v-show="show">v-show: display control</div>
+      <button @click="pushTodo">push todo</button>
+      <ul class="todos">
+        <li v-for="(todo, index) in todos" :key="index">{{ todo.title }}</li>
+      </ul>
     </div>
 
     <script>
       const vm = new Vue({
         el: "#app",
         data: {
-          show: true,
+          todos: [
+            {
+              id: 0,
+              title: "vue 공부",
+            },
+            {
+              id: 1,
+              title: "react 공부",
+            },
+            {
+              id: 2,
+              title: "nodejs 공부",
+            },
+          ],
         },
         methods: {
-          toggle() {
-            this.show = !this.show;
+          pushTodo(todo) {
+            this.todos.push({ id: 3, title: "aws 공부" });
           },
         },
       });
