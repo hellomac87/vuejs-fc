@@ -14,6 +14,12 @@
       <ul class="todos">
         <li v-for="(todo, index) in todos" :key="index">{{ todo.title }}</li>
       </ul>
+
+      <ul class="dobby">
+        <li v-for="(value, key, index) in dobby" :key="index">
+          {{key}} : {{value}}
+        </li>
+      </ul>
     </div>
 
     <script>
@@ -34,6 +40,10 @@
               title: "nodejs 공부",
             },
           ],
+          dobby: {
+            name: "dobby",
+            age: "33",
+          },
         },
         methods: {
           pushTodo(todo) {
