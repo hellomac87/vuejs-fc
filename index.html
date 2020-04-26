@@ -15,6 +15,7 @@
         <li v-for="(todo, index) in todos" :key="index">{{ todo.title }}</li>
       </ul>
 
+      <button @click="addHomepage">add Homepage property</button>
       <ul class="dobby">
         <li v-for="(value, key, index) in dobby" :key="index">
           {{key}} : {{value}}
@@ -47,7 +48,12 @@
         },
         methods: {
           pushTodo(todo) {
-            this.todos.push({ id: 3, title: "aws 공부" });
+            // this.todos.push({ id: 3, title: "aws 공부" });
+            // Vue.set(this.todos, 3, { id: 3, title: "aws 공부" });
+            vm.$set(this.todos, 3, { id: 3, title: "aws 공부!" });
+          },
+          addHomepage() {
+            this.$set(this.dobby, "homepage", "github.com/dobby");
           },
         },
       });
