@@ -10,15 +10,14 @@
 
   <body>
     <div id="app">
-      <button @click="pushTodo">push todo</button>
-      <ul class="todos">
-        <li v-for="(todo, index) in todos" :key="index">{{ todo.title }}</li>
-      </ul>
-
-      <button @click="addHomepage">add Homepage property</button>
-      <ul class="dobby">
-        <li v-for="(value, key, index) in dobby" :key="index">
-          {{key}} : {{value}}
+      <ul>
+        <li
+          :class="'item-' + (index+1)"
+          v-for="(todo, index) in todos"
+          :key="index"
+          @click="clickMethod1(todo.title, $event); clickMethod2()"
+        >
+          {{todo.title}}
         </li>
       </ul>
     </div>
@@ -41,19 +40,15 @@
               title: "nodejs 공부",
             },
           ],
-          dobby: {
-            name: "dobby",
-            age: "33",
-          },
         },
         methods: {
-          pushTodo(todo) {
-            // this.todos.push({ id: 3, title: "aws 공부" });
-            // Vue.set(this.todos, 3, { id: 3, title: "aws 공부" });
-            vm.$set(this.todos, 3, { id: 3, title: "aws 공부!" });
+          clickMethod1(title, event) {
+            console.log("click 1");
+            console.log(title);
+            console.log(event.currentTarget.className);
           },
-          addHomepage() {
-            this.$set(this.dobby, "homepage", "github.com/dobby");
+          clickMethod2() {
+            console.log("click 2");
           },
         },
       });
