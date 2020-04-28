@@ -9,46 +9,31 @@
   </head>
 
   <body>
+    <style>
+      .parent {
+        width: 200px;
+        height: 200px;
+        background: powderblue;
+      }
+      .child {
+        width: 100px;
+        height: 100px;
+        background: palevioletred;
+      }
+    </style>
     <div id="app">
-      <ul>
-        <li
-          :class="'item-' + (index+1)"
-          v-for="(todo, index) in todos"
-          :key="index"
-          @click="clickMethod1(todo.title, $event); clickMethod2()"
-        >
-          {{todo.title}}
-        </li>
-      </ul>
+      <div class="parent" @click.self="clickHandler">
+        <!-- <div class="child" @click="clickHandler"></div> -->
+        <div class="child"></div>
+      </div>
     </div>
 
     <script>
       const vm = new Vue({
         el: "#app",
-        data: {
-          todos: [
-            {
-              id: 0,
-              title: "vue 공부",
-            },
-            {
-              id: 1,
-              title: "react 공부",
-            },
-            {
-              id: 2,
-              title: "nodejs 공부",
-            },
-          ],
-        },
         methods: {
-          clickMethod1(title, event) {
-            console.log("click 1");
-            console.log(title);
+          clickHandler(event) {
             console.log(event.currentTarget.className);
-          },
-          clickMethod2() {
-            console.log("click 2");
           },
         },
       });
